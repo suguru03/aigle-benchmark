@@ -1,0 +1,22 @@
+{
+  "name": "aigle-benchmark",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "promise"
+  ],
+  "author": "Suguru Motegi",
+  "license": "MIT",
+  "devDependencies": {
+    "aigle": "^0.1.1",
+    "benchmark": "^2.1.3",
+    "bluebird": "^3.4.7",
+    "lodash": "^4.17.4",
+    "minimist": "^1.2.0",
+    "promise-libraries": "^0.1.0"
+  }
+}
