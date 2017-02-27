@@ -11,6 +11,7 @@ const Bluebird = require('bluebird');
 
 const defaults = { count: 100 };
 
+// node --expose_gc .
 const count = argv.c || argv.count;
 const target = argv.t || argv.target; // -t <function name>
 const makeDock = argv.d || argv.docs; // -d make documents
@@ -62,6 +63,9 @@ const benchmarkTasks = _.transform(tasks, (result, obj) => {
     result.push(() => {
       console.log('======================================');
       console.log(`[${name}] Preparing...`);
+      if (global.gc) {
+        global.gc();
+      }
 
       // validate functions
       setup(config);
@@ -76,8 +80,6 @@ const benchmarkTasks = _.transform(tasks, (result, obj) => {
             const value1 = obj[key1];
             const value2 = obj[key2];
             if (!_.isEqual(value1, value2)) {
-              console.error(`[${key1}]`, value1);
-              console.error(`[${key2}]`, value2);
               throw new Error(`Validation is failed ${key1}, ${key2}`);
             }
           });

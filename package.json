@@ -12,11 +12,11 @@
   "author": "Suguru Motegi",
   "license": "MIT",
   "devDependencies": {
-    "aigle": "^0.1.1",
+    "aigle": "^0.4.1",
     "benchmark": "^2.1.3",
     "bluebird": "^3.4.7",
     "lodash": "^4.17.4",
     "minimist": "^1.2.0",
-    "promise-libraries": "^0.1.0"
+    "promise-libraries": "^0.3.0"
   }
 }

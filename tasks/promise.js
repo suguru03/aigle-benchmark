@@ -1,7 +1,7 @@
 'use strict';
 
 const _ = require('lodash');
-const { Aigle: Aigle010, Bluebird: Bluebird346 } = require('promise-libraries');
+const { Aigle: AigleOld, Bluebird: BluebirdOld } = require('promise-libraries');
 
 module.exports = ({ Aigle, Bluebird }) => {
 
@@ -33,26 +33,18 @@ module.exports = ({ Aigle, Bluebird }) => {
       setup: config => count = config.count,
       aigle: () => {
         let p = new Aigle(resolve => setImmediate(() => resolve(0)));
-        _.times(count, n => {
+        _.times(count, () => {
           p = p.then(value => {
-            if (n % 2 === 0) {
-              return new Aigle010(resolve => setImmediate(() => resolve(++value)));
-            } else {
-              return new Aigle(resolve => setImmediate(() => resolve(++value)));
-            }
+            return new AigleOld(resolve => setImmediate(() => resolve(++value)));
           });
         });
         return p;
       },
       bluebird: () => {
         let p = new Bluebird(resolve => setImmediate(() => resolve(0)));
-        _.times(count, n => {
+        _.times(count, () => {
           p = p.then(value => {
-            if (n % 2 === 0) {
-              return new Bluebird346(resolve => setImmediate(() => resolve(++value)));
-            } else {
-              return new Bluebird(resolve => setImmediate(() => resolve(++value)));
-            }
+            return new BluebirdOld(resolve => setImmediate(() => resolve(++value)));
           });
         });
         return p;
